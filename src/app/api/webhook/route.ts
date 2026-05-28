@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 // Mock DB simples em memória para simular o saldo do usuário
 const usersDb: Record<string, number> = {
-  'teste0209@email.com': 100.00
+  'teste0209@email.com': 1.00
 };
 
 export async function POST(request: Request) {
@@ -15,9 +15,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ msg: "INVALID_USER", balance: 0 }, { status: 404 });
     }
 
-    // Se o usuário não existir no nosso mock, nós o criamos com saldo 100
+    // Se o usuário não existir no nosso mock, nós o criamos com saldo 1.00
     if (!(user_code in usersDb)) {
-      usersDb[user_code] = 100.00;
+      usersDb[user_code] = 1.00;
     }
 
     let currentBalance = usersDb[user_code];

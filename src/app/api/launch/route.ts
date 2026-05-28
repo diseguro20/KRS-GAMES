@@ -8,7 +8,7 @@ export async function POST(request: Request) {
 
     // Em um sistema real, você pegaria o e-mail/ID e o saldo do usuário logado no banco de dados.
     const user_code = 'teste0209@email.com'; 
-    const user_balance = 100.00;
+    const user_balance = 1.00;
 
     // As chaves precisam vir de variáveis de ambiente (.env) para segurança
     const agentToken = process.env.AGENT_TOKEN || 'e9a59425-bb20-4908-b565-f6ea1b6aa204';
