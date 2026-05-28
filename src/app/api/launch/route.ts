@@ -11,8 +11,8 @@ export async function POST(request: Request) {
     const user_balance = 100.00;
 
     // As chaves precisam vir de variáveis de ambiente (.env) para segurança
-    const agentToken = process.env.AGENT_TOKEN || '';
-    const secretKey = process.env.SECRET_KEY || '';
+    const agentToken = process.env.AGENT_TOKEN || 'e9a59425-bb20-4908-b565-f6ea1b6aa204';
+    const secretKey = process.env.SECRET_KEY || 'b985148a-8107-4657-bda1-2dd71aab3edb';
 
     if (!agentToken || !secretKey) {
       return NextResponse.json({ error: 'Chaves da API (AGENT_TOKEN e SECRET_KEY) não estão configuradas no servidor.' }, { status: 400 });
