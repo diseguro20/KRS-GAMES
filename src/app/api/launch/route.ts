@@ -32,7 +32,17 @@ export async function POST(request: Request) {
     if (response.status && response.launch_url) {
       return NextResponse.json({ url: response.launch_url });
     } else {
-      return NextResponse.json({ error: response.msg || 'Erro na API PlayFivers' }, { status: 400 });
+      let serverIp = 'desconhecido';
+      try {
+        const ipRes = await fetch('https://api.ipify.org?format=json');
+        const ipData = await ipRes.json();
+        serverIp = ipData.ip;
+      } catch (ipErr) {
+        console.error('Erro ao obter IP do servidor:', ipErr);
+      }
+      return NextResponse.json({ 
+        error: `${response.msg || 'Erro na API PlayFivers'} (IP de saída do servidor: ${serverIp})` 
+      }, { status: 400 });
     }
 
   } catch (error) {
